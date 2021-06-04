@@ -1,0 +1,19 @@
+.cardMain{
+    position: relative;
+    margin-top: -60%;
+    min-height: 15.5rem;
+    border-radius: 13px;
+    /* border: 1px solid #ff000061; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../assets/images/20.jpeg');
+}
+
+.numRow{
+    align-items: center;
+}
+
+.chip{
+    /* height: 8%; */
+    width: 17%;
+}

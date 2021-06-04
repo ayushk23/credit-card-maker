@@ -5,14 +5,10 @@
     color:rgb(82, 82, 82);
     border: 1px solid #ccc;
     border-radius: 5px;
+    min-height: 21rem;
 }
 .labelName{
     font-size: 0.8rem;
     font-weight: 500;
     margin-bottom: 0px;
-}
-.cardMain{
-    width: 90%;
-    position: relative;
-    margin-top: -60%;
 }

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/cardForm.css';
-import card from '../assets/images/20.jpeg';
+import Card from './Card'
 
 export default function CardForm(props){
+
+    const [number, setNumber] = useState('');
+
+    const updateNumber = function(e){
+        const regex =  /^[0-9]{0,16}$/
+        let num = e.target.value.replaceAll(' ','');
+        if(regex.test(num)){
+            // split in froup of 4digits and add space with legacy regex $1
+            setNumber(num.replace(/(.{4})/g, '$1 ').trim());
+        }
+    }
 
 
     const numberInput = (
          <div className="row mb-3">
             <label className="labelName">Card Number</label>
-            <input type="text" className="form-control"  />
+            <input type="text" value={number} className="form-control" onChange={updateNumber} />
         </div>
     )
     const nameInput = (
@@ -21,14 +32,12 @@ export default function CardForm(props){
 
     return(
         <div className="formBox container p-5">
+            <Card number={number.replace(' ','')} />
             
-            <div>
-                <img src={card} alt="card" className="cardMain" />
-            </div>
             <form className="mt0">
                 {numberInput}
                 {nameInput}
-                <div class="row">
+                <div className="row">
                     <label className="labelName">Expiration Date</label>
                     <label className="labelName offset-6">CVV</label>
                 </div>
