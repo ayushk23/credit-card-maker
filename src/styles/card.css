@@ -10,10 +10,15 @@
 }
 
 .numRow{
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2rem;
 }
 
 .chip{
     /* height: 8%; */
     width: 17%;
+}
+.num{
+    width: 10px !important;
 }

@@ -12,6 +12,10 @@ export default function CardForm(props){
         if(regex.test(num)){
             // split in froup of 4digits and add space with legacy regex $1
             setNumber(num.replace(/(.{4})/g, '$1 ').trim());
+            // AMEX
+            // re2 = /([0-9]{4})([0-9]{6})([0-9]{5})/
+            // x.replace(re2, '$1 $2 $3')
+            // "1234 567890 123456"
         }
     }
 
@@ -32,7 +36,7 @@ export default function CardForm(props){
 
     return(
         <div className="formBox container p-5">
-            <Card number={number.replace(' ','')} />
+            <Card number={number} />
             
             <form className="mt0">
                 {numberInput}
