@@ -4,7 +4,13 @@ import Card from './Card'
 
 export default function CardForm(props){
 
-    const [number, setNumber] = useState('');
+    const [ number, setNumber ] = useState('');
+    const [ holderName, setHolderName ] = useState('');
+    const [ month, setMonth ] = useState('');
+    const [ year, setYear ] = useState('');
+    let months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+    let years = [...Array(15).keys()].map(x=>x+ new Date().getUTCFullYear());
+
 
     const updateNumber = function(e){
         const regex =  /^[0-9]{0,16}$/
@@ -18,7 +24,18 @@ export default function CardForm(props){
             // "1234 567890 123456"
         }
     }
-
+    const updateName = function(e){
+        let rex = /(^[a-zA-Z\'\-\s]{0,25}$)/
+        if(rex.test(e.target.value))
+            setHolderName(e.target.value);
+    }
+    
+    const updateMonth = function(e){
+        setMonth(e.target.value);
+    }
+    const updateYear = function(e){
+        setYear(e.target.value);
+    }
 
     const numberInput = (
          <div className="row mb-3">
@@ -29,14 +46,14 @@ export default function CardForm(props){
     const nameInput = (
         <div className="row mb-3">
             <label className="labelName">Card Name</label>
-            <input type="text" className="form-control" />
+            <input type="text" value={ holderName } className="form-control" onChange={ updateName } />
         </div>
     )
 
 
     return(
         <div className="formBox container p-5">
-            <Card number={number} />
+            <Card number={number} holderName={holderName} month={month} year={year} />
             
             <form className="mt0">
                 {numberInput}
@@ -46,15 +63,21 @@ export default function CardForm(props){
                     <label className="labelName offset-6">CVV</label>
                 </div>
                 <div className="row">
-                    <select className="form-control col" >
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
+                    <select className="form-control col" value={month} onChange={updateMonth} >
+                        <option value="" disabled selected>Month</option>
+                        {
+                            months.map(m=>(
+                                <option value={m}>{m}</option>
+                            ))
+                        } 
                     </select>
-                    <select className="form-control col ml-2 mr-2" >
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
+                    <select className="form-control col ml-2 mr-2" value={year} onChange={updateYear}>
+                        <option value="" disabled selected>Year</option>
+                        {
+                            years.map(y=>(
+                                <option value={y}>{y}</option>
+                            ))
+                        } 
                     </select>
                     <input type="text" className="form-control col mr-0"/>
                 </div>

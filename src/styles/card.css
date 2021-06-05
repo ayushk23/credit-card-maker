@@ -6,7 +6,8 @@
     /* border: 1px solid #ff000061; */
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('../assets/images/20.jpeg');
+    background-image: url('../assets/images/13.jpeg');
+    color: #b7b7b7;
 }
 
 .numRow{
@@ -21,4 +22,15 @@
 }
 .num{
     width: 10px !important;
+}
+.metaText{
+    font-size: 0.7rem;
+    margin-bottom: 0px;
+}
+.mon{
+    min-width:25px;
+    text-align: right;
+    align-items: flex-end;
+    align-content: flex-end;
+    /* background-color: red; */
 }
