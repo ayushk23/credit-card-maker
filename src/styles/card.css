@@ -34,3 +34,31 @@
     align-content: flex-end;
     /* background-color: red; */
 }
+.cardLogo{
+    height: 3rem;
+    width: 6rem;
+    z-index:2;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.visa{
+    background-image: url('../assets/images/visa.png');
+}
+.amex{
+    background-image: url('../assets/images/amex.png');
+
+}
+.mastercard{
+    background-image: url('../assets/images/mastercard.png');
+}
+.discover{
+    background-image: url('../assets/images/discover.png');
+}
+.rupay{
+    background-image: url('../assets/images/rupay.png');
+}
+.maestro{
+    background-image: url('../assets/images/maestro.png');
+}

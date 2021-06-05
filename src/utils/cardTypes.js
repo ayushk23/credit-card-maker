@@ -40,8 +40,7 @@ export const CARD_TYPES = {
   }
 }
 
-export getCardType = (cardNum) => {
-
+export function getCardType(cardNum){
     var payCardType = "";
     var regexMap = [
       {regEx: /^4[0-9]{5}/ig,cardType: "VISA"},

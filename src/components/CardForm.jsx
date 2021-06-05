@@ -9,7 +9,7 @@ export default function CardForm(props){
     const [ month, setMonth ] = useState('');
     const [ year, setYear ] = useState('');
     let months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
-    let years = [...Array(15).keys()].map(x=>x+ new Date().getUTCFullYear());
+    let years = [...Array(15).keys()].map(x=>x+ new Date().getYear()%100);
 
 
     const updateNumber = function(e){
