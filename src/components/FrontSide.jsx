@@ -1,22 +1,11 @@
 import React ,{ useState, useEffect } from 'react';
 import chip from '../assets/images/chip.png';
 import TextTransition from "react-text-transition";
-import { getCardType } from '../utils/cardTypes'
-import visa from '../assets/images/visa.png';
 
 
 export default function FrontSide(props){
     const [numArr, setNumArr] = useState(new Array(19).fill('#'));
-    const [type, setType] = useState('visa');
-
-    useEffect(() => {
-        let ctype = getCardType(props.number.replaceAll(' ',''));
-        ctype = ctype.length===0?'visa':ctype;
-        setType(ctype.toLowerCase());
-    }, [props.number]);
-
-
-
+    
 
     //Modify digit in display
     const formatNumber = function(char,i){ 
@@ -40,7 +29,7 @@ export default function FrontSide(props){
             <div>
                 <div className="p-4 d-flex justify-content-between">
                     <img src={chip} className="chip" alt="chip" />
-                    <span className={ type + " cardLogo"}></span>
+                    <span className={ props.type + " cardLogo"}></span>
                 </div>
                 <div  className="numRow mt-3 align-middle">
                     <strong>
