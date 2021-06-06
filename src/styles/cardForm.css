@@ -14,3 +14,16 @@
     font-weight: 500;
     margin-bottom: 0px;
 }
+.box{
+    display:none;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    position: absolute;
+    height: 3.1rem;
+    width: 21rem;
+    border: 2px solid white;
+    border-radius:7px;
+    background-color: transparent;
+    margin-top: -8.7rem;
+    margin-left: 1rem;
+}

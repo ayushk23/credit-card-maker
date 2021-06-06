@@ -4,18 +4,32 @@ import TextTransition from "react-text-transition";
 
 
 export default function FrontSide(props){
-    const [numArr, setNumArr] = useState(new Array(19).fill('#'));
-    
+    // const [numArr, setNumArr] = useState(new Array(19).fill('#'));
+    let defVal = "#### #### #### ####";
+    const [numArr, setNumArr] = useState(defVal.split(''));
 
     //Modify digit in display
     const formatNumber = function(char,i){ 
-        if(i===4 || i===9 || i===14) {    
-            char=' ';
+        
+        if(props.type==='amex'){
+            if(i===4 || i===11) {    
+                char=' ';
+            }
+            else if(i<4 || i>13)
+                char = (props.number[i]===undefined)?'#':props.number[i];
+            else {
+                char = (props.number[i]===undefined)?'#':'*';
+            }
         }
-        else if(i<4 || i>14)
-            char = (props.number[i]===undefined)?'#':props.number[i];
-        else {
-            char = (props.number[i]===undefined)?'#':'*';
+        else{
+            if(i===4 || i===9 || i===14) {    
+                char=' ';
+            }
+            else if(i<4 || i>14)
+                char = (props.number[i]===undefined)?'#':props.number[i];
+            else {
+                char = (props.number[i]===undefined)?'#':'*';
+            }
         }
         return char; 
     }
@@ -33,15 +47,27 @@ export default function FrontSide(props){
                 </div>
                 <div  className="numRow mt-3 align-middle">
                     <strong>
-                    { numArr.map(n=>(
-                        <TextTransition
-                            inline
-                            text={ n }
-                            springConfig={{ stiffness: 80, damping: 20 }}
-                            direction="down"
-                            className="num pr-3"
-                            />
-                        )) 
+                    { props.type==='amex'?
+                        numArr.slice(0,17).map((n,i)=>(
+                            <TextTransition
+                                inline key={i}
+                                text={ n }
+                                springConfig={{ stiffness: 80, damping: 20 }}
+                                direction="down"
+                                className="num pr-3"
+                                />
+                            )) 
+                        :
+                        numArr.map((n,i)=>(
+                            <TextTransition
+                                key={i}
+                                inline
+                                text={ n }
+                                springConfig={{ stiffness: 80, damping: 20 }}
+                                direction="down"
+                                className="num pr-3"
+                                />
+                            ))
                     }
                     </strong>
                 </div>

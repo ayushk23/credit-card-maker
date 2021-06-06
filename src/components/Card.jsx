@@ -2,8 +2,7 @@ import React , { useState, useEffect, useRef } from 'react';
 import '../styles/card.css';
 import BackSide from './BackSide';
 import FrontSide from './FrontSide';
-import { getCardType } from '../utils/cardTypes'
-import visa from '../assets/images/visa.png';
+import { getCardType } from '../utils/cardTypes';
 
 
 export default function Card(props){
