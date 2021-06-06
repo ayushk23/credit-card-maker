@@ -11,9 +11,7 @@ export default function FrontSide(props){
 
     useEffect(() => {
         let ctype = getCardType(props.number.replaceAll(' ',''));
-        console.log(props.number);
         ctype = ctype.length===0?'visa':ctype;
-        console.log(ctype);
         setType(ctype.toLowerCase());
     }, [props.number]);
 
@@ -21,17 +19,16 @@ export default function FrontSide(props){
 
 
     //Modify digit in display
-    const formatNumber = function(p,i){ 
-        let temp='#';
+    const formatNumber = function(char,i){ 
         if(i===4 || i===9 || i===14) {    
-            temp=' ';
+            char=' ';
         }
         else if(i<4 || i>14)
-            temp = (props.number[i]===undefined)?'#':props.number[i];
+            char = (props.number[i]===undefined)?'#':props.number[i];
         else {
-            temp = (props.number[i]===undefined)?'#':'*';
+            char = (props.number[i]===undefined)?'#':'*';
         }
-        return temp; 
+        return char; 
     }
        // uypdate the display array 
        useEffect(() => {

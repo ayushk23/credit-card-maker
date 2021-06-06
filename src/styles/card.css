@@ -1,64 +1,84 @@
-.cardMain{
-    position: relative;
-    margin-top: -60%;
-    min-height: 15.5rem;
-    border-radius: 13px;
-    /* border: 1px solid #ff000061; */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('../assets/images/13.jpeg');
-    color: #b7b7b7;
+.numRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 2rem;
 }
 
-.numRow{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 2rem;
+.chip {
+  /* height: 8%; */
+  width: 17%;
+}
+.num {
+  width: 10px !important;
+}
+.metaText {
+  font-size: 0.7rem;
+  margin-bottom: 0px;
+}
+.mon {
+  min-width: 20px;
+  /* background-color: red; */
+}
+.cardLogo {
+  height: 3rem;
+  width: 6rem;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.chip{
-    /* height: 8%; */
-    width: 17%;
+/*  ============= CARDS =========== */
+.visa {
+  background-image: url("../assets/images/visa.png");
 }
-.num{
-    width: 10px !important;
+.amex {
+  background-image: url("../assets/images/amex.png");
 }
-.metaText{
-    font-size: 0.7rem;
-    margin-bottom: 0px;
+.mastercard {
+  background-image: url("../assets/images/mastercard.png");
 }
-.mon{
-    min-width:25px;
-    text-align: right;
-    align-items: flex-end;
-    align-content: flex-end;
-    /* background-color: red; */
+.discover {
+  background-image: url("../assets/images/discover.png");
 }
-.cardLogo{
-    height: 3rem;
-    width: 6rem;
-    z-index:2;
-    background-repeat: no-repeat;
-    background-size: contain;
+.rupay {
+  background-image: url("../assets/images/rupay.png");
+}
+.maestro {
+  background-image: url("../assets/images/maestro.png");
+}
+
+.cardContainer {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 
-.visa{
-    background-image: url('../assets/images/visa.png');
+.cardBack {
+  transform: rotateY(180deg);
 }
-.amex{
-    background-image: url('../assets/images/amex.png');
-
+.cardImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../assets/images/13.jpeg");
+  border-radius: 15px;
 }
-.mastercard{
-    background-image: url('../assets/images/mastercard.png');
-}
-.discover{
-    background-image: url('../assets/images/discover.png');
-}
-.rupay{
-    background-image: url('../assets/images/rupay.png');
-}
-.maestro{
-    background-image: url('../assets/images/maestro.png');
+.cardMain {
+  position: relative;
+  margin-top: -60%;
+  min-height: 15.5rem;
+  border-radius: 13px;
+  /* border: 1px solid #ff000061; */
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  color: #b7b7b7;
+  perspective: 1000px;
 }

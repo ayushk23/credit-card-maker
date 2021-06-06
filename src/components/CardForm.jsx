@@ -8,8 +8,18 @@ export default function CardForm(props){
     const [ holderName, setHolderName ] = useState('');
     const [ month, setMonth ] = useState('');
     const [ year, setYear ] = useState('');
+    const [ cvv, setCvv ] = useState('');
+    // const [toggle, setToggle ] = useState(false);
+    const [toggle, setToggle ] = useState('');
     let months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
     let years = [...Array(15).keys()].map(x=>x+ new Date().getYear()%100);
+
+    const updateToggle = function(){
+        setToggle('180deg');
+    }
+    const revertToggle = function(){
+        setToggle('360deg');
+    }
 
 
     const updateNumber = function(e){
@@ -18,7 +28,7 @@ export default function CardForm(props){
         if(regex.test(num)){
             // split in froup of 4digits and add space with legacy regex $1
             setNumber(num.replace(/(.{4})/g, '$1 ').trim());
-            // AMEX
+            // AMEX        
             // re2 = /([0-9]{4})([0-9]{6})([0-9]{5})/
             // x.replace(re2, '$1 $2 $3')
             // "1234 567890 123456"
@@ -35,6 +45,11 @@ export default function CardForm(props){
     }
     const updateYear = function(e){
         setYear(e.target.value);
+    }
+    const updateCVV = function(e){
+        const regex =  /^[0-9]{0,4}$/
+        if(regex.test(e.target.value))
+            setCvv(e.target.value);
     }
 
     const numberInput = (
@@ -53,7 +68,7 @@ export default function CardForm(props){
 
     return(
         <div className="formBox container p-5">
-            <Card number={number} holderName={holderName} month={month} year={year} />
+            <Card number={number} holderName={holderName} month={month} year={year} cvv={cvv} toggle={toggle}   />
             
             <form className="mt0">
                 {numberInput}
@@ -79,7 +94,10 @@ export default function CardForm(props){
                             ))
                         } 
                     </select>
-                    <input type="text" className="form-control col mr-0"/>
+                    <input type="text" id="cvv" value={cvv} onChange={updateCVV} 
+                        onFocus={updateToggle} 
+                        onBlur={revertToggle} 
+                        className="form-control col mr-0"/>
                 </div>
                 <div className="row mt-3">
                     <button className="btn btn-primary form-control">Submit</button>
