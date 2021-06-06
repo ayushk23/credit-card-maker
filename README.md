@@ -1,6 +1,6 @@
 # Credit Card Maker React App
 
-![Sample Demo](https://tenor.com/bDP2O.gif)
+Sample Prototype:  https://imgur.com/7qCCZKv
 
 ## Available Scripts
 
