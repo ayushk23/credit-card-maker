@@ -1,8 +1,9 @@
 # Credit Card Form - A React App
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/credit-card-maker-rncdl)
+
 Sample Prototype:  https://imgur.com/7qCCZKv
 
-Demo: https://codesandbox.io/s/credit-card-maker-rncdl
 
 ## What does the app do?
 
@@ -33,7 +34,7 @@ This app has the following features:
 - Regex validation for input fields.
 - Some cool animations - Active Section box that smnoothly tarnsitions on the focussed input's rendered section and card rotation.
 
-## How to implement dynamic card grouping?
+## How to implement dynamic card number grouping?
 
 The card grouping is done in a single element as a string and not broken down into multiple elements.
 To achieve that, it has 2 different regex in place that formats the numbers based on the card type - 4x4 OR 4-6-5.
