@@ -75,13 +75,16 @@ export default function FrontSide(props){
                     <div className="col-9">
                         <div className="row h6 metaText">Card Holder</div>
                         <div className="row h6">
-                        <TextTransition
+                            <div className="pr-3 h6">{ props.holderName.toUpperCase() || 'AYUSH KUMAR' }</div>
+                        {
+                        
+                        /* <TextTransition
                             inline
                             text={ props.holderName || 'Ayush Kumar' }
                             springConfig={{ stiffness: 80, damping: 20 }}
                             className="pr-3 h6"
                             direction="down"
-                            />
+                            /> */}
                         </div>
                     </div>
                     <div className="col-3">
