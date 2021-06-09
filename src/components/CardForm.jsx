@@ -5,7 +5,7 @@ import { getCardType } from '../utils/cardTypes';
 
 export default function CardForm(props){
 
-    const [ number, setNumber ] = useState('');
+    const [ cardNumber, setCardNumber ] = useState('');
     const [ holderName, setHolderName ] = useState('');
     const [ month, setMonth ] = useState('');
     const [ year, setYear ] = useState('');
@@ -23,7 +23,7 @@ export default function CardForm(props){
     }
 
     // Update the number as formatted on the input box asn set to state
-    const updateNumber = function(e){
+    const updateCardNumber = function(e){
         const regex =  /^[0-9]{0,16}$/
         let num = e.target.value.replaceAll(' ','');
         if(regex.test(num)){
@@ -32,13 +32,13 @@ export default function CardForm(props){
             ctype = ctype.length===0?'visa':ctype;
             if(ctype==='amex'){
                 //split via 3 groups
-                let cardNumber = (num.slice(0,4).replace(/(.{4})/g, '$1 ') + 
+                let tempCardNumber = (num.slice(0,4).replace(/(.{4})/g, '$1 ') + 
                     num.slice(4,10).replace(/(.{6})/g, '$1 ') +
                     num.slice(10,15)).trim();
-                    setNumber(cardNumber);
+                setCardNumber(tempCardNumber);
             }
             else
-                setNumber(num.replace(/(.{4})/g, '$1 ').trim());
+                setCardNumber(num.replace(/(.{4})/g, '$1 ').trim());
         }
     }
     const updateName = function(e){
@@ -58,26 +58,22 @@ export default function CardForm(props){
         if(regex.test(e.target.value))
             setCvv(e.target.value);
     }
-    const boxAtNumber = ()=>{
+    const updateActiveBox = (x,y,width,height) =>{
+        console.log(`translate(${x},${y})`);
         boxRef.current.style.display = 'block';
         boxRef.current.style.borderColor='darkgray';
-        boxRef.current.style.transform= "translateY(0)";
-        boxRef.current.style.width= "21rem";
-        boxRef.current.style.height= "3rem";
+        boxRef.current.style.transform= `translate(${x}rem,${y}rem)`;
+        boxRef.current.style.height= `${height}rem`;
+        boxRef.current.style.width= `${width}rem`;
+    }
+    const boxAtCardNumber = ()=>{
+        updateActiveBox('0','0','21','3');
     }
     const boxAtName = ()=>{
-        boxRef.current.style.display = 'block';
-        boxRef.current.style.borderColor='darkgray';
-        boxRef.current.style.transform= "translateY(5.5rem)"
-        boxRef.current.style.height= "2.7rem";
-        boxRef.current.style.width= "16rem";
+        updateActiveBox('0','5.5','16','2.7');
     }
     const boxAtDate = ()=>{
-        boxRef.current.style.display = 'block';
-        boxRef.current.style.borderColor='darkgray';
-        boxRef.current.style.transform= "translate(16.5rem,5.5rem)"
-        boxRef.current.style.height= "2.7rem";
-        boxRef.current.style.width= "5rem";
+        updateActiveBox('16.5','5.5','5','2.7');
     }
     const resetBox = ()=>{
         boxRef.current.style.borderColor='transparent';
@@ -87,7 +83,7 @@ export default function CardForm(props){
     const numberInput = (
          <div className="row mb-3">
             <label className="labelName">Card Number</label>
-            <input type="text" value={number} className="form-control" onChange={updateNumber} onFocus={boxAtNumber} onBlur={resetBox} />
+            <input type="text" value={ cardNumber } className="form-control" onChange={updateCardNumber} onFocus={boxAtCardNumber} onBlur={resetBox} />
         </div>
     )
     const nameInput = (
@@ -99,7 +95,7 @@ export default function CardForm(props){
 
     return(
         <div className="formBox container p-5">
-            <Card number={number} holderName={holderName} month={month} year={year} cvv={cvv} toggle={toggle}   />
+            <Card cardNumber={cardNumber} holderName={holderName} month={month} year={year} cvv={cvv} toggle={toggle}   />
             <div ref={boxRef} className="box"></div>
             <form className="mt0">
                 {numberInput}

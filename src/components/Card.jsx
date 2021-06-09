@@ -11,10 +11,10 @@ export default function Card(props){
     const [type, setType] = useState('visa');
 
     useEffect(() => {
-        let ctype = getCardType(props.number.replaceAll(' ',''));
+        let ctype = getCardType(props.cardNumber.replaceAll(' ',''));
         ctype = ctype.length===0?'visa':ctype;
         setType(ctype.toLowerCase());
-    }, [props.number]);
+    }, [props.cardNumber]);
 
     useEffect(() => {
            cardRef.current.style.transform= 'rotateY('+props.toggle+')';
@@ -26,7 +26,7 @@ export default function Card(props){
         <div className="cardContainer">
             <div className="cardMain" ref={cardRef} >
                 <div className="cardImg cardFront ">
-                    <FrontSide  number={props.number} holderName={props.holderName} month={props.month} year={props.year} type={type} />
+                    <FrontSide  cardNumber={props.cardNumber} holderName={props.holderName} month={props.month} year={props.year} type={type} />
                 </div>
                 <div className="cardImg cardBack">
                     <BackSide cvv={props.cvv} type={type} />

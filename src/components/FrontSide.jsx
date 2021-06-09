@@ -16,9 +16,9 @@ export default function FrontSide(props){
                 char=' ';
             }
             else if(i<4 || i>13)
-                char = (props.number[i]===undefined)?'#':props.number[i];
+                char = (props.cardNumber[i]===undefined)?'#':props.cardNumber[i];
             else {
-                char = (props.number[i]===undefined)?'#':'*';
+                char = (props.cardNumber[i]===undefined)?'#':'*';
             }
         }
         else{
@@ -26,9 +26,9 @@ export default function FrontSide(props){
                 char=' ';
             }
             else if(i<4 || i>14)
-                char = (props.number[i]===undefined)?'#':props.number[i];
+                char = (props.cardNumber[i]===undefined)?'#':props.cardNumber[i];
             else {
-                char = (props.number[i]===undefined)?'#':'*';
+                char = (props.cardNumber[i]===undefined)?'#':'*';
             }
         }
         return char; 
@@ -37,7 +37,7 @@ export default function FrontSide(props){
        useEffect(() => {
         let temp = numArr.map(formatNumber);
         setNumArr(temp);
-        }, [props.number]);
+        }, [props.cardNumber]);
     
         return(
             <div>
