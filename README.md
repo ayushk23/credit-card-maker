@@ -2,9 +2,13 @@
 
 Sample Prototype:  https://imgur.com/7qCCZKv
 
+Demo: https://codesandbox.io/s/credit-card-maker-rncdl
 
-Demo: https://codesandbox.io/s/credit-card-maker-forked-zvlgb
+## What does the app do?
 
+This is a react app of a prototype of a credit card form which renders a credit card based on the input provided by the user in the form.
+You can run the app on your local or the codesandbox and play around with it to explore more.
+It is designed to be used as a plug-and-play for an existing payment gateway in some application.
 ## How do I run it?
 
 In the project directory, you can open cmd and type the below command to run:
@@ -14,11 +18,6 @@ In the project directory, you can open cmd and type the below command to run:
 This runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## What does the app do?
-
-This is a react app of a prototype of a credit card form which renders a credit card based on the input provided by the user in the form.
-You can run the app on your local or the codesandbox and play around with it to explore more.
-It is designed to be used as a plug-and-play for an existing payment gateway in some application.
 
 ## What are its features?
 
@@ -31,6 +30,7 @@ This app has the following features:
 - Also supports **American Express** that has 15 digit card number.
 - Dynamic card number grouping into `4,4,4,4` for 16 digit cards and `4,6,5` for 15 digit Amex(American Express) cards.
 - Masking of inputs on the card.
+- Regex validation for input fields.
 - Some cool animations - Active Section box that smnoothly tarnsitions on the focussed input's rendered section and card rotation.
 
 ## How to implement dynamic card grouping?
@@ -43,14 +43,14 @@ The implementation can be found in `CardForm.js`.
 ```
     if(cardType === 'amex'){
         //split with the help of 3 groups
-        let cardNumber = (num.slice(0,4).replace(/(.{4})/g, '$1 ') + 
+        let tempCardNumber = (num.slice(0,4).replace(/(.{4})/g, '$1 ') + 
             num.slice(4,10).replace(/(.{6})/g, '$1 ') +
             num.slice(10,15)).trim();
-        setNumber(cardNumber);  //updating the state
+        setCardNumber(tempCardNumber);  //updating the state
     }
     else{
-        // for 4x4 
-        setNumber(num.replace(/(.{4})/g, '$1 ').trim()); //we do trim to remove thge trailing whitespace with '$1 '
+        // for 4x4 group
+        setCardNumber(num.replace(/(.{4})/g, '$1 ').trim()); //we do trim to remove thge trailing whitespace with '$1 '
     }
 ```
 
@@ -66,5 +66,8 @@ In this case, lets breakdown `num.replace(/(.{4})/g, '$1 ')` to undcerstand more
 [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/n) about the $n regex placeholder.
 
 
-##### Saw something which can be improved or is a bug? 
-Point it out with an issue
+#### Saw something which can be improved or is a bug? 
+Open a Pull request or an issue.
+
+#### Liked what you saw?
+Show some love with a star.
